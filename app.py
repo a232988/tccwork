@@ -32,6 +32,7 @@ def process_excel_file(uploaded_file):
         progress_cell = summary_sheet.cell(row=3, column=date_col_idx)
         date_sheet['B2'] = progress_cell.value
 
+        date_sheet['B1'] = summary_sheet['B1'].value
         date_sheet['C1'] = summary_sheet['C1'].value
         date_sheet['D1'] = summary_sheet['D1'].value
         date_sheet['A3'].fill = light_blue_fill
@@ -75,4 +76,4 @@ if uploaded_file is not None:
         workbook.save(output)
         output.seek(0)
         st.success('處理完成！')
-        st.download_button(label="下載修改後的文件", data=output, file_name="修改後的文件.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        st.download_button(label="下載修改後的文件", data=output, file_name="修改後的文件.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",on_click=st.balloons)
